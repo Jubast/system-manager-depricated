@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/system_manager
+system_manager.so
+system_manager.dylib
+system_manager.dll
+system_manager.a
+system_manager.lib
+system_manager-test-*
+*.exe
+*.o
+*.obj
+*.lst

@@ -1,0 +1,30 @@
+[
+    {
+        "pnpid": "AOC3201",
+        "inputAddress": "0x60",
+        "configurations": [
+            {
+                "name": "Windows",
+                "value": "15"
+            },
+            {
+                "name": "Linux",
+                "value": "17"
+            }
+        ]
+    },
+    {
+        "pnpid": "BNQ78E1",
+        "inputAddress": "0x60",
+        "configurations": [
+            {
+                "name": "Windows",
+                "value": "17"
+            },
+            {
+                "name": "Linux",
+                "value": "5"
+            }
+        ]
+    }
+]

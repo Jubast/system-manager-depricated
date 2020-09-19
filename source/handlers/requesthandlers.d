@@ -5,6 +5,7 @@ import asdf;
 import std.path;
 import std.conv;
 import std.file;
+import std.stdio;
 
 import helpers.searching;
 import helpers.configdirectory;
@@ -15,12 +16,16 @@ import clients.virshclient;
 
 static void switchToLinux(HTTPServerRequest req, HTTPServerResponse res)
 {
+//	writeln("here");
+	
     auto type = req.query.get("type");
     if (type == req.query.ValueType.init)
         return;
 
     if (type == "clean")
     {
+	writeln("here1");
+
         switchAccessories(SwitchType.Detach, "win10_clean_gaming");
         switchMonitors("Linux");
     }
@@ -77,16 +82,18 @@ private void switchMonitors(string configuration)
 private void switchAccessories(SwitchType type, string hostName)
 {
     if (type == SwitchType.Attach)
-    {
+    {        
         attachDeviceLive(hostName, buildPath(ConfigurationDirectory, "virsh_keyboard.xml"));
         attachDeviceLive(hostName, buildPath(ConfigurationDirectory, "virsh_mouse.xml"));
         attachDeviceLive(hostName, buildPath(ConfigurationDirectory, "virsh_audio.xml"));
+        attachDeviceLive(hostName, buildPath(ConfigurationDirectory, "virsh_bluetooth.xml"));
     }
     else if (type == SwitchType.Detach)
     {
         detachDevice(hostName, buildPath(ConfigurationDirectory, "virsh_keyboard.xml"));
         detachDevice(hostName, buildPath(ConfigurationDirectory, "virsh_mouse.xml"));
         detachDevice(hostName, buildPath(ConfigurationDirectory, "virsh_audio.xml"));
+        detachDevice(hostName, buildPath(ConfigurationDirectory, "virsh_bluetooth.xml"));
     }
     else
     {

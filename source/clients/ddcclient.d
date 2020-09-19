@@ -55,6 +55,14 @@ private Monitor[] toMonitors(DDCCONTROL_GET_MONITORS source)
     return monitors;
 }
 
+void rescanMonitors()
+{
+    Message request = Message(busName("ddccontrol.DDCControl"),
+            ObjectPath("/ddccontrol/DDCControl"),
+            interfaceName("ddccontrol.DDCControl"), "RescanMonitors");
+    connection.sendBlocking(request);
+}
+
 Monitor[] listMonitors()
 {
     Message request = Message(busName("ddccontrol.DDCControl"),
@@ -110,7 +118,7 @@ unittest
 {
     auto monitors = listMonitors();
     changeMonitorInputSource(&monitors[1], 0x60, 17);
-} */
+}
 
 unittest
 {
@@ -120,4 +128,4 @@ unittest
         populateMonitorInfo(&mon);
         writeln(mon);
     }
-}
+} */
